@@ -61,7 +61,15 @@ namespace HereticXNA
 			Vector4 screenBB = new Vector4(0, 0, screenSize.X, screenSize.Y);
 
 			debugRects.Clear();
+
+#if CULLING_ENABLED
 			addSector(startSector, ref screenBB);
+#else
+            foreach (r_local.sector_t sector in p_setup.sectors)
+            {
+                sectors[sectorCount++] = sector;
+            }
+#endif
 
 #if DEBUG
 			cullingTime = (DateTime.Now - t).TotalMilliseconds;
@@ -268,6 +276,7 @@ namespace HereticXNA
 #if DEBUG
 		public static void displayDebug()
 		{
+#if CULLING_ENABLED
 			Game1.instance.spriteBatch.Begin();
 			Game1.instance.spriteBatch.DrawString(Game1.instance.font, "sectorChecked: " + sectorChecked, Vector2.Zero, Color.Yellow);
 			Game1.instance.spriteBatch.DrawString(Game1.instance.font, "portalChecked: " + portalChecked, new Vector2(0, 20), Color.Yellow);
@@ -275,6 +284,7 @@ namespace HereticXNA
 			Game1.instance.spriteBatch.DrawString(Game1.instance.font, "cullingTime: " + cullingTime, new Vector2(0, 60), Color.Yellow);
 			Game1.instance.spriteBatch.DrawString(Game1.instance.font, "sectorCount: " + sectorCount, new Vector2(0, 80), Color.Yellow);
 			Game1.instance.spriteBatch.End();
+#endif
 		}
 #endif
 	}
