@@ -12,7 +12,7 @@
       <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="ambient_enabled" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="use_deferred" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
