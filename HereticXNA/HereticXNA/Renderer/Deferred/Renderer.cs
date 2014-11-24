@@ -80,7 +80,8 @@ namespace HereticXNA.Deferred
 			// Post process
 			if (Settings.Default.postprocess_enabled)
 			{
-				// Bind frame buffer used for post process
+                // Bind frame buffer used for post process
+                m_device.SetRenderTargets(null);
 			}
 			else
 			{
